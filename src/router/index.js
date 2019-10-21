@@ -1,12 +1,12 @@
 import Vue from "vue"
 import VueRouter from 'vue-router'
-import App from '../App.vue'
+import Home from '../components/Home.vue'
+import Login from '../components/Login.vue'
+import Board from '../components/Board.vue'
+import NotFound from '../components/NotFound.vue'
 
 
 Vue.use(VueRouter); // 미들웨어로 추가해줘야 뷰라우터 사용이 가능!!
-
-const Login = { template: '<div>Login Page</div>' }
-const NotFound = { template: '<div>Page not found</div>' }
 
 
 const router = new VueRouter ({
@@ -15,8 +15,9 @@ const router = new VueRouter ({
 
   routes: [
 
-    { path: "/", component: App },
+    { path: "/", component: Home },
     { path: "/login", component: Login },
+    { path: "/b/:bid", component: Board },
     { path: "*", component: NotFound}
 
   ]
