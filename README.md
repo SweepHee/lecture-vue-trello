@@ -27,4 +27,8 @@ For detailed explanation on how things work, consult the [docs for vue-loader](h
 2. src->main.js import import VueRouter from 'vue-router'
 3. Vue.use(VueRouter) 미들웨어로 추가해줘야 한다!
 
+# AXIOS 설치
+1. npm install axios
+
+
 ```

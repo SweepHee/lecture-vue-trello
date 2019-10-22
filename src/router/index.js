@@ -10,13 +10,19 @@ import NotFound from '../components/NotFound.vue'
 Vue.use(VueRouter); // 미들웨어로 추가해줘야 뷰라우터 사용이 가능!!
 
 
+const requireAuth = (to, from, next) => {
+  const isAuth = localStorage.getItem("token")
+  const loginPath = `/login?rPath=${encodeURIComponent(to.path)}`
+  isAuth ? next() : next(loginPath);
+}
+
 const router = new VueRouter ({
   mode: "history",
   // 브라우저 주소에 #이 마지막에 존재함. 그거 지울때 사용.
 
   routes: [
 
-    { path: "/", component: Home },
+    { path: "/", component: Home, beforeEnter: requireAuth },
     { path: "/login", component: Login },
     { path: "/b/:bid", component: Board, children: [
         { path: "c/:cid", component: Card }
